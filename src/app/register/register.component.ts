@@ -6,12 +6,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit {
-  username: string;
-  fullname: string;
-  email: string;
-  phonenumber: number;
-  password: string;
-  retypepassword: string;
+  username: string | undefined;
+  fullname: string | undefined;
+  email: string | undefined;
+  phonenumber: number | undefined;
+  password: string | undefined;
+  retypepassword: string | undefined;
 
   constructor() { }
 

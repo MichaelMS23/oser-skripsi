@@ -6,8 +6,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
-  private username: string;
-  private password: string;
+  username: string | undefined;
+  password: string | undefined;
 
   constructor() { }
 
