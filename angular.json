@@ -55,7 +55,7 @@
               "src/assets"
             ],
             "styles": [
-              "C:\\Users\\Michael Satriaji\\Desktop\\skripshit\\Apps\\oser-skripsi\\node_modules\\bulma\\css\\bulma.css",
+              ".\\node_modules\\bulma\\css\\bulma.css",
               "src/styles.scss"
             ],
             "scripts": []
