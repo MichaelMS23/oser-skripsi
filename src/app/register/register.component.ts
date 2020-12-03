@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import axios from "axios";
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,16 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  submitRegister() {  }
+  async submitRegister() { 
+    let a = await axios.create().request({
+      method: "post",
+      url: "http://3.208.28.174:3003/user/login",
+      data:{
+        userid:"evi",
+        password:"evi"
+      }
+    });
+    console.log(a);
+   }
 
 }
