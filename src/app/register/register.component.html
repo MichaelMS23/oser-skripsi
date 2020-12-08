@@ -11,15 +11,6 @@
         <form #f="ngForm" (ngSubmit)="submitRegister()" novalidate #registerForm="ngForm">
 
             <div class="field">
-                <label class="label">User Name</label>
-                <input type="text" name="username" class="input" [(ngModel)]="username" #usernameInput="ngModel"
-                    required>
-                <div class="help" *ngIf="usernameInput.invalid && usernameInput.dirty">
-                    User Name Harus di isi
-                </div>
-            </div>
-
-            <div class="field">
                 <label class="label">Nama Lengkap</label>
                 <input type="text" name="fullname" class="input" [(ngModel)]="fullname" #fullnameInput="ngModel"
                     required>

@@ -1,3 +1,4 @@
+import { TagContentType } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import * as $ from 'jquery';
@@ -8,7 +9,6 @@ import * as $ from 'jquery';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit {
-    username: string | undefined;
     fullname: string | undefined;
     email: string | undefined;
     phonenumber: number | undefined;
@@ -28,38 +28,33 @@ export class RegisterComponent implements OnInit {
             headers: {
                 'Content-Type': 'application/json',
             },
-            data: JSON.stringify({ sendTo: 'farak82632@hebgsw.com' }),
+            data: { sendto: this.email },
         });
-
-        console.log(response);
-
-        // //set responsenya ke messagenya
-        // this.validCode = response.message
-
-        //kalo responsenya error gak tampilin modalnya
-        if (false) {
+        
+        if (response.status==200) {
+            this.validCode = response.data.message
             $('.modal').addClass('is-active');
         }
     }
 
     async VerifyCode() {
-        //cek kode input sama kode dari email
-        //kalo sama login dan redirect
-        if (this.validCode == this.code) {
-            //login
-            let response = await axios.create().request({
-                method: 'post',
-                url: 'http://3.208.28.174:3003/user/login',
-                data: {
-                    userid: 'evi',
-                    password: 'evi',
-                },
-            });
-
-            console.log(this.code);
-
-            //redirect home ? sepertinya gak butuh close modalnya lagi
-            $('.modal').removeClass('is-active');
+        if (this.validCode != this.code) {
+            this.code = ""
+            return
         }
+  
+        await axios.create().request({
+            method: 'post',
+            url: 'http://3.208.28.174:3003/user/register',
+            data: {
+                userid:this.fullname,
+                username:this.fullname,
+                password:this.password,
+                email:this.email,
+                phone:this.password
+            },
+        });
+
+        window.location.href = "/"
     }
 }
