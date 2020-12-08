@@ -8,18 +8,12 @@
 
 <section class="section">
     <div class="container">
-        <form #f="ngForm" (ngSubmit)="submitRegister()" novalidate #registerForm = "ngForm">
+        <form #f="ngForm" (ngSubmit)="submitRegister()" novalidate #registerForm="ngForm">
 
             <div class="field">
                 <label class="label">User Name</label>
-                <input
-                        type="text"
-                        name="username"
-                        class="input"
-                        [(ngModel)] = "username"
-                        #usernameInput="ngModel"
-                        required
-                >
+                <input type="text" name="username" class="input" [(ngModel)]="username" #usernameInput="ngModel"
+                    required>
                 <div class="help" *ngIf="usernameInput.invalid && usernameInput.dirty">
                     User Name Harus di isi
                 </div>
@@ -27,14 +21,8 @@
 
             <div class="field">
                 <label class="label">Nama Lengkap</label>
-                <input
-                        type="text"
-                        name="fullname"
-                        class="input"
-                        [(ngModel)] = "fullname"
-                        #fullnameInput="ngModel"
-                        required
-                >
+                <input type="text" name="fullname" class="input" [(ngModel)]="fullname" #fullnameInput="ngModel"
+                    required>
                 <div class="help" *ngIf="fullnameInput.invalid && fullnameInput.dirty">
                     Nama Lengkap Harus di isi
                 </div>
@@ -42,15 +30,7 @@
 
             <div class="field">
                 <label class="label">Email</label>
-                <input
-                        type="email"
-                        name="email"
-                        class="input"
-                        [(ngModel)] = "email"
-                        #emailInput = "ngModel"
-                        required
-                        email
-                >
+                <input type="email" name="email" class="input" [(ngModel)]="email" #emailInput="ngModel" required email>
                 <div class="help" *ngIf="emailInput.invalid && emailInput.dirty">
                     Email Harus di isi
                 </div>
@@ -58,14 +38,8 @@
 
             <div class="field">
                 <label class="label">Nomor Telepon</label>
-                <input
-                        type="text"
-                        name="phonenumber"
-                        class="input"
-                        [(ngModel)] = "phonenumber"
-                        #phonenumberInput = "ngModel"
-                        required
-                >
+                <input type="text" name="phonenumber" class="input" [(ngModel)]="phonenumber"
+                    #phonenumberInput="ngModel" required>
                 <div class="help" *ngIf="phonenumberInput.invalid && phonenumberInput.dirty">
                     Nomor Telepon Harus di isi
                 </div>
@@ -73,14 +47,8 @@
 
             <div class="field">
                 <label class="label">Password</label>
-                <input
-                        type="password"
-                        name="password"
-                        class="input"
-                        [(ngModel)] = "password"
-                        #passwordInput = "ngModel"
-                        required
-                >
+                <input type="password" name="password" class="input" [(ngModel)]="password" #passwordInput="ngModel"
+                    required>
                 <div class="help" *ngIf="passwordInput.invalid && passwordInput.dirty">
                     Password Harus di isi
                 </div>
@@ -88,26 +56,41 @@
 
             <div class="field">
                 <label class="label">Re-type Password</label>
-                <input
-                        type="password"
-                        name="retypepassword"
-                        class="input"
-                        [(ngModel)] = "retypepassword"
-                        #retypepasswordInput = "ngModel"
-                        required
-                >
-                <div class="help" *ngIf="retypepasswordInput.invalid && retypepasswordInput.dirty && retypepasswordInput !== passwordInput">
+                <input type="password" name="retypepassword" class="input" [(ngModel)]="retypepassword"
+                    #retypepasswordInput="ngModel" required>
+                <div class="help"
+                    *ngIf="retypepasswordInput.invalid && retypepasswordInput.dirty && retypepasswordInput !== passwordInput">
                     Password harus sama
                 </div>
             </div>
 
-            <button
-                    type="submit"
-                    class="button is-medium is-primary"
-                    [disabled]="registerForm.invalid"
-            >
+            <button type="submit" class="button is-medium is-primary" [disabled]="registerForm.invalid"
+                data-toggle="modal" data-target="#verifyModal">
                 Daftar
             </button>
         </form>
+    </div>
+
+    <div id="verifyModal" class="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="verifyModalLabel">Verify Code</h5>
+                </div>
+                <div class="modal-body">
+                    <form #f="ngForm" #verifyForm="ngForm">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Code:</label>
+                            <input type="text" name="code" class="input" [(ngModel)]="code" #codeInput="ngModel"
+                                required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="VerifyCode()" type="button" class="btn btn-primary"
+                        [disabled]="verifyForm.invalid">Verify</button>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
