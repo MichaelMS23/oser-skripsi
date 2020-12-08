@@ -1,4 +1,3 @@
-import { TagContentType } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import * as $ from 'jquery';
