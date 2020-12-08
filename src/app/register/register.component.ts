@@ -1,10 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import axios from 'axios';
 import * as $ from 'jquery';
-=======
-import axios from "axios";
->>>>>>> 3f145669748bf4b010b796dbaddb8de1a5d10f39
 
 @Component({
     selector: 'app-register',
